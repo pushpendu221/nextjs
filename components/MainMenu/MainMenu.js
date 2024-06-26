@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import {FaHouseUser, FaHeart} from 'react-icons/fa';
-export const MainMenu = ({items}) => {
+export const MainMenu = ({items, callToActionLabel, callToActionDestination}) => {
     //console.log("Main menu",props)
     return (
         <div className="bg-slate-800 text-white px-5 h-[64px] sticky top-0 z-20 flex">
@@ -30,6 +30,11 @@ export const MainMenu = ({items}) => {
                 </div>
             )}
             )}
+            <div className='ml-3 my-auto'>
+                <Link className='bg-blue-500 hover:bg-blue-700 inline-block my-2 px-4 py-2 uppercase rounded-md cursor-pointer font-bold text-white' href={callToActionDestination}>
+                    {callToActionLabel}
+                </Link>
+            </div>
             </div>
         </div>
     )
