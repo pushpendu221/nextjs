@@ -1,3 +1,4 @@
+import { CallToActionButton } from "components/CallToActionButton";
 import { Cover } from "components/Cover";
 import { Heading } from "components/Heading";
 import { Paragraph } from "components/Paragraph";
@@ -5,6 +6,16 @@ import { theme } from "theme";
 export const BlockRenderer = ({blocks}) => {
     return blocks.map(block => {
         switch(block.name){
+            case 'acf/ctabutton':{
+                return(
+                    <CallToActionButton 
+                    key={block.id} 
+                    align={block.attributes.data.allignment} 
+                    buttonlabel={block.attributes.data.label} 
+                    destination={block.attributes.data.destination || "/"}
+                    />
+                )
+            }
             case 'core/heading':{
                 return (
                 <Heading 
@@ -28,6 +39,7 @@ export const BlockRenderer = ({blocks}) => {
                 </Cover>;
             }
             default:
+                console.log("unknown", block);
                 return null;
         }
     })
