@@ -12,7 +12,7 @@ export default function Page(props){
 
 export const getStaticProps = async (context) => {
   console.log("CONTEXT here",context);
-  const uri = `/index.php/${context.params.slug.join("/")}/`;
+  const uri = `/${context.params.slug.join("/")}/`;
   console.log("URI",uri);
     const {data} = await client.query({
         query:gql`
