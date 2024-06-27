@@ -68,6 +68,13 @@ export const BlockRenderer = ({blocks}) => {
                     <BlockRenderer blocks={block.innerBlocks} />
                 </Cover>;
             }
+            case 'core/group':
+            case 'core/block':{
+                return(
+                <BlockRenderer key={block.id} blocks={block.innerBlocks}/>
+
+                );
+            }
             default:
                 console.log("unknown", block);
                 return null;
