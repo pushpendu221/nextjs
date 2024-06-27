@@ -5,6 +5,7 @@ import { Cover } from "components/Cover";
 import { Heading } from "components/Heading";
 import { Imagedata } from "components/Image";
 import { Paragraph } from "components/Paragraph";
+import { PropertySearch } from "components/PropertySearch";
 import { theme } from "theme";
 export const BlockRenderer = ({blocks}) => {
     return blocks.map(block => {
@@ -76,6 +77,11 @@ export const BlockRenderer = ({blocks}) => {
 
                 );
             }
+            case 'acf/propertysearch':{
+                return(
+                    <PropertySearch key={block.id}/>
+                );
+            }    
             default:
                 console.log("unknown", block);
                 return null;
