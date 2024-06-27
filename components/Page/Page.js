@@ -2,6 +2,7 @@ import { BlockRenderer } from "components/BlockRenderer";
 import { MainMenu } from "components/MainMenu";
 
 export const Page = (props) => {
+  console.log("props", props);
     return (
         <div>
     <MainMenu items={props.mainMenuItems} callToActionLabel={props.callToActionLabel
