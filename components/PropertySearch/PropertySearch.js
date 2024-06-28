@@ -15,12 +15,26 @@ export const PropertySearch = () => {
   // Would need function search function outside
   const search = async () => {
     //We are using search function later in handlepageClick so that we can get the query parameters.
-    const {page} = queryString.parse(window.location.search);
+    const {page,petFriendly,hasParking,minPrice,maxPrice} = queryString.parse(window.location.search);
+    const filters = {};
+    if(minPrice){
+        filters.minPrice = parseInt(minPrice);
+    }
+    if(maxPrice){
+        filters.maxPrice = parseInt(maxPrice);
+    }
+    if(petFriendly === "true"){
+        filters.petFriendly = true;
+    }
+    if(hasParking === "true"){
+        filters.hasParking = true;
+    }
     const response = await fetch(`api/search`,{
       method: "POST",
       body: JSON.stringify({
         //if no page as part of our query String then we sent 1.
         page: parseInt(page || "1"),
+        ...filters,
       }),
     });
     const data = await response.json();
@@ -32,6 +46,16 @@ export const PropertySearch = () => {
     search();
   }, []);
 
+  const handleSearch= async ({petFriendly,hasParking,minPrice,maxPrice}) => {
+    //update our browser Url
+    //search
+    console.log("Filters:",petFriendly,hasParking,minPrice,maxPrice);
+    await router.push(`${router.query.slug.join("/")}?page=1&petFriendly=${petFriendly}&hasParking=${hasParking}&minPrice=${minPrice}&maxPrice=${maxPrice}`, null, {
+        shallow: true, // it means this function wouldn't rerun when page updates
+      });
+      search();
+  }
+
   const handlePageClick = async (pageNumber) => {
    await router.push(`${router.query.slug.join("/")}?page=${pageNumber}`, null, {
       shallow: true, // it means this function wouldn't rerun when page updates
@@ -41,7 +65,7 @@ export const PropertySearch = () => {
   };
   return (
     <div>
-        <Filters/>
+        <Filters onSearch={handleSearch}/>
       <Results properties={properties} />
       <Pagination
         onPageClick={handlePageClick}
