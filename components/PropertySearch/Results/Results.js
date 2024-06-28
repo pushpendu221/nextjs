@@ -16,7 +16,6 @@ export const Results = ({properties}) => {
                 petFriendly={property.propertyfeatures.petFriendly}
                 image = {property.featuredImage?.node?.sourceUrl}
                 />
-                {/* <Pagination key={}/> */}
                 </div>
             )
         })}
