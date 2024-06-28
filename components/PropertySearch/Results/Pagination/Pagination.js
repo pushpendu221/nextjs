@@ -1,4 +1,4 @@
-export const Pagination = ({totalPages}) => {
+export const Pagination = ({totalPages,onPageClick}) => {
     return (
         <div className="max-w-5xl mx-auto mb-10 flex justify-center gap-2">
             {/*     //The JavaScript Array.from method can be used to create an array of a specified length.
@@ -6,7 +6,10 @@ export const Pagination = ({totalPages}) => {
                      // Expected output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
                     //_ is a placeholder for the current element,Since it's not used, it is common to name it _. 
                Array.from({length:totalPages}).map((_,i) =>(
-                <div key={i} className="btn">
+                <div key={i} className="btn" onClick={()=>{
+                    // as index(i) starts from 0
+                    onPageClick(i + 1); 
+                }}>
                     {i+1}
                 </div>
                ))}
