@@ -3,6 +3,7 @@ import { Column } from "components/Column";
 import { Columns } from "components/Columns";
 import { Cover } from "components/Cover";
 import { FormspreeForm } from "components/FormspreeForm";
+import { Gallery } from "components/Gallery";
 import { Heading } from "components/Heading";
 import { Imagedata } from "components/Image";
 import { Paragraph } from "components/Paragraph";
@@ -93,7 +94,15 @@ export const BlockRenderer = ({blocks}) => {
                 return(
                     <PropertyFeatures key={block.id} bathroom={block.attributes.bathroom} bedroom={block.attributes.bedroom} price={block.attributes.price} has_parking={block.attributes.has_parking} pet_friendly={block.attributes.pet_friendly}/>
                 );
-            }    
+            }
+            case 'core/gallery':{
+                return(
+                    <Gallery key={block.id} 
+                    column={block.attributes.width || 3} 
+                    cropImages={block.attributes.imageCrop} 
+                    items={block.innerBlocks}/>
+                );
+            }      
             default:
                 console.log("unknown", block);
                 return null;
