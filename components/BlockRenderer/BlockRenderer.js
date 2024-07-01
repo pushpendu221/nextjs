@@ -2,6 +2,7 @@ import { CallToActionButton } from "components/CallToActionButton";
 import { Column } from "components/Column";
 import { Columns } from "components/Columns";
 import { Cover } from "components/Cover";
+import { FormspreeForm } from "components/FormspreeForm";
 import { Heading } from "components/Heading";
 import { Imagedata } from "components/Image";
 import { Paragraph } from "components/Paragraph";
@@ -80,6 +81,11 @@ export const BlockRenderer = ({blocks}) => {
             case 'acf/propertysearch':{
                 return(
                     <PropertySearch key={block.id}/>
+                );
+            }  
+            case 'acf/formspreeform':{
+                return(
+                    <FormspreeForm key={block.id} formId={block.attributes.data.form_id}/>
                 );
             }    
             default:
