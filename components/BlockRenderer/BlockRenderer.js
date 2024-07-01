@@ -22,10 +22,13 @@ export const BlockRenderer = ({blocks}) => {
                 )
             }
             case 'core/columns':{
+               // console.log("COLUmns", block.attributes)
                 return(
                     <Columns
                     key={block.id}
                     isStackedOnMobile ={block.attributes.isStackedOnMobile}
+                    backGroundColor={theme[block.attributes.backgroundColor]}
+                    textColor ={theme[block.attributes.textColor]}
                     >
                         <BlockRenderer blocks={block.innerBlocks}/>
                     </Columns>
