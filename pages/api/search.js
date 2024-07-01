@@ -21,13 +21,13 @@ const handler = async (req, res) => {
         }
         if(filters.minPrice){
             minPriceFilter = `
-             {key: "price", compare: GREATER_THAN_OR_EQUAL_TO, value: "${filters.minPrice}",type:NUMERIC
+             {key: "price", compare: GREATER_THAN_OR_EQUAL_TO, value: "${filters.minPrice}",
                         }
             `
         }
         if(filters.maxPrice){
             maxPricefilter = `
-             {key: "price", compare: LESS_THAN_OR_EQUAL_TO, value: "${filters.maxPrice}",type:NUMERIC
+             {key: "price", compare: LESS_THAN_OR_EQUAL_TO, value: "${filters.maxPrice}",
                  }
             `
         }

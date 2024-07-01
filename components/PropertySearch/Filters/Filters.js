@@ -1,6 +1,6 @@
 import { Input } from "components/Input";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import queryString from "query-string";
 export const Filters = ({onSearch}) => {
     const [petFriendly, setPetFriendly] = useState(false);
     const [hasParking, setHasParking] = useState(false);
@@ -14,6 +14,21 @@ export const Filters = ({onSearch}) => {
             maxPrice,
         })
     }
+
+    useEffect(() => {
+      const {
+        petFriendly:petFriendlyInitial,
+        hasParking:hasParkingInitial,
+        minPrice:minPriceInitial,
+        maxPrice:maxPriceInitial
+      } = queryString.parse(window.location.search);
+      setPetFriendly(petFriendlyInitial === "true");
+      setHasParking(hasParkingInitial === "true");
+      setMinPrice(minPriceInitial || '');
+      setMaxPrice(maxPriceInitial || '');
+
+    },[]);
+
   return (
     <div className="mx-w-5xl mx-4 my-5 flex gap-5 border-solid border-slate-400 border-2 p-5 rounded-md">
       <div className="flex-1">

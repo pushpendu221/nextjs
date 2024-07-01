@@ -57,7 +57,13 @@ export const PropertySearch = () => {
   }
 
   const handlePageClick = async (pageNumber) => {
-   await router.push(`${router.query.slug.join("/")}?page=${pageNumber}`, null, {
+    const {
+      petFriendly,
+      hasParking,
+      minPrice,
+      maxPrice
+    } = queryString.parse(window.location.search);
+   await router.push(`${router.query.slug.join("/")}?page=${pageNumber}&petFriendly=${petFriendly ==='true'}&hasParking=${hasParking ==='true'}&minPrice=${minPrice}&maxPrice=${maxPrice}`, null, {
       shallow: true, // it means this function wouldn't rerun when page updates
     });
     //Async and Await because after router.push finishes then search() function is used.
