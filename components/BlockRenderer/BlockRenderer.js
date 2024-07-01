@@ -6,6 +6,7 @@ import { FormspreeForm } from "components/FormspreeForm";
 import { Heading } from "components/Heading";
 import { Imagedata } from "components/Image";
 import { Paragraph } from "components/Paragraph";
+import { PropertyFeatures } from "components/PropertyFeatures";
 import { PropertySearch } from "components/PropertySearch";
 import { theme } from "theme";
 export const BlockRenderer = ({blocks}) => {
@@ -86,6 +87,11 @@ export const BlockRenderer = ({blocks}) => {
             case 'acf/formspreeform':{
                 return(
                     <FormspreeForm key={block.id} formId={block.attributes.data.form_id}/>
+                );
+            }    
+            case 'acf/propertyfeatures':{
+                return(
+                    <PropertyFeatures key={block.id} bathroom={block.attributes.bathroom} bedroom={block.attributes.bedroom} price={block.attributes.price} has_parking={block.attributes.has_parking} pet_friendly={block.attributes.pet_friendly}/>
                 );
             }    
             default:
