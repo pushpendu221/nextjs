@@ -9,6 +9,6 @@ export const theme = {
     "accent-2": "#c2a990",
     "accent-3": "#d8613c",
     "accent-4": "#b1c5a4",
-    "accent-5": "b5bdbc",
+    "accent-5": "#b5bdbc",
     "vivid-green-cyan": "#00D084"
 }

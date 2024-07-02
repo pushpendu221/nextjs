@@ -9,6 +9,7 @@ import { Imagedata } from "components/Image";
 import { Paragraph } from "components/Paragraph";
 import { PropertyFeatures } from "components/PropertyFeatures";
 import { PropertySearch } from "components/PropertySearch";
+import { TickItem } from "components/TickItem";
 import { theme } from "theme";
 export const BlockRenderer = ({blocks}) => {
     return blocks.map(block => {
@@ -16,7 +17,11 @@ export const BlockRenderer = ({blocks}) => {
 
             case 'core/column':{
                 return(
-                    <Column key={block.id} width={block.attributes?.width}>
+                    <Column key={block.id} 
+                    width={block.attributes?.width}
+                     backGroundColor={theme[block.attributes?.backgroundColor]}
+                    // textColor ={theme[block.attributes.textColor]}
+                    >
                          <BlockRenderer blocks={block.innerBlocks}/>
                     </Column>
                 )
@@ -104,6 +109,13 @@ export const BlockRenderer = ({blocks}) => {
                     column={block.attributes.width || 3} 
                     cropImages={block.attributes.imageCrop} 
                     items={block.innerBlocks}/>
+                );
+            }
+            case 'acf/tickitem':{
+                return(
+                    <TickItem key={block.id}>
+                        <BlockRenderer blocks={block.innerBlocks} />
+                    </TickItem>
                 );
             }      
             default:
