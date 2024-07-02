@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from "react";
 import { Results } from "./Results";
 import { Pagination } from "./Results/Pagination";
