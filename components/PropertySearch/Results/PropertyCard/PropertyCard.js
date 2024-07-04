@@ -14,7 +14,7 @@ export const PropertyCard = ({
     petFriendly, 
     image
     }) => {
-return <Link href={destination} className="border-2 border-slate-300 p-5 block bg-slate-100 hover:bg-slate-200">
+return <a href={destination} className="border-2 border-slate-300 p-5 block bg-slate-100 hover:bg-slate-200">
     <div className="flex w-full h-[200px] relative">
         <Image 
         className="object-cover"
@@ -54,5 +54,5 @@ return <Link href={destination} className="border-2 border-slate-300 p-5 block b
             </div>
         )}
        
-    </Link>;
+    </a>;
 }

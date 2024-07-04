@@ -13,17 +13,17 @@ export const MainMenu = ({items, callToActionLabel, callToActionDestination}) =>
             {(items || []).map((item) => {return (
                 <div key={item.id} className='hover:bg-slate-700 cursor-pointer relative group'>
                     <div>
-                        <Link href={item.destination} className='p-5 block'>
+                        <a href={item.destination} className='p-5 block'>
                             {item.label}
-                        </Link>
+                        </a>
                     </div>
                     {!!item.subMenuItems?.length &&
                     <div className='group-hover:block hidden bg-slate-800 text-right absolute right-0 top-full -mt-3'>
                         {item.subMenuItems.map((subMenuItem)=>{
                             return(
-                                <Link key={subMenuItem.id} href={subMenuItem.destination} className='block whitespace-nowrap p-5 hover:bg-slate-700 cursor-pointer'>
+                                <a key={subMenuItem.id} href={subMenuItem.destination} className='block whitespace-nowrap p-5 hover:bg-slate-700 cursor-pointer'>
                                     {subMenuItem.label}
-                                </Link>
+                                </a>
                             )
                         })}
                     </div>
