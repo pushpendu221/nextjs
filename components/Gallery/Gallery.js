@@ -26,7 +26,8 @@ export const Gallery = ({column, cropImages, items}) => {
                 <Image src={item.attributes.url} 
                 height={ maxHeight || item.attributes.height} // Remember if the first one is true, second condition doesn't follow for ||.
                 width={maxWidth || item.attributes.width}
-                alt={item.attributes.alt}
+                alt={item.attributes.alt || ""}
+                priority
                 />
            </div>
         ))}

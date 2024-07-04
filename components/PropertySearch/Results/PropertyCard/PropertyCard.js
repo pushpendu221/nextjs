@@ -15,12 +15,12 @@ export const PropertyCard = ({
     image
     }) => {
 return <Link href={destination} className="border-2 border-slate-300 p-5 block bg-slate-100 hover:bg-slate-200">
-    <div className="flex w-full">
+    <div className="flex w-full h-[200px] relative">
         <Image 
-        className="object-cover h-48"
+        className="object-cover"
         src={image} 
-        width = {300}
-        height = {300}
+        fill
+        sizes="300"
         alt=""/>
     </div>
     <div className="mt-3 text-lg font-bold">{title}</div>
