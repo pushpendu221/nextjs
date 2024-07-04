@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { Results } from "./Results";
 import { Pagination } from "./Results/Pagination";
-import { useRouter } from "next/router";
+import { useRouter,usePathname } from "next/navigation";
 //Basically..it converts query string into objects
 import queryString from "query-string";
 import { Filters } from "./Filters";
@@ -13,6 +13,7 @@ export const PropertySearch = () => {
   const PageSize = 3;
   //nextJS router
   const router = useRouter();
+  const pathname = usePathname();
   // Would need function search function outside
   const search = async () => {
     //We are using search function later in handlepageClick so that we can get the query parameters.
@@ -51,10 +52,8 @@ export const PropertySearch = () => {
     //update our browser Url
     //search
     console.log("Filters:",petFriendly,hasParking,minPrice,maxPrice);
-    await router.push(`${router.query.slug.join("/")}?page=1&petFriendly=${petFriendly}&hasParking=${hasParking}&minPrice=${minPrice}&maxPrice=${maxPrice}`, null, {
-        shallow: true, // it means this function wouldn't rerun when page updates
-      });
-      search();
+     router.push(`${pathname}?page=1&petFriendly=${petFriendly}&hasParking=${hasParking}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
+     
   }
 
   const handlePageClick = async (pageNumber) => {
@@ -64,11 +63,9 @@ export const PropertySearch = () => {
       minPrice,
       maxPrice
     } = queryString.parse(window.location.search);
-   await router.push(`${router.query.slug.join("/")}?page=${pageNumber}&petFriendly=${petFriendly ==='true'}&hasParking=${hasParking ==='true'}&minPrice=${minPrice}&maxPrice=${maxPrice}`, null, {
-      shallow: true, // it means this function wouldn't rerun when page updates
-    });
+    router.push(`${pathname}?page=${pageNumber}&petFriendly=${petFriendly ==='true'}&hasParking=${hasParking ==='true'}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
     //Async and Await because after router.push finishes then search() function is used.
-    search();
+
   };
   return (
     <div>
